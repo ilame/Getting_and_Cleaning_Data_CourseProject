@@ -1,6 +1,6 @@
 # Getting_and_Cleaning_Data_CourseProject
 
-# Dataset Overview 
+# Overview 
 ==================================================================
 Human Activity Recognition Using Smartphones Dataset
 ==================================================================
