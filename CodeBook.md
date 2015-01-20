@@ -1,6 +1,15 @@
 
 
-#Human Activity Recognition Using Smartphones Dataset
+#CodeBook
+
+The data source
+
+data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+description of the dataset: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+#Study Design 
+
+(extracted from the "README.txt" file  : https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip )
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
@@ -47,8 +56,28 @@ Notes:
 - Features are normalized and bounded within [-1,1].
 - Each feature vector is a row on the text file.
 
-License:
+#Transformation details
 
-Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
+The script run_analysis.R performs the 5 steps described in the course project's definition.
 
-[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+Step1- all the files having the same number of columns and referring to the same entities are merged using the rbind() function. 
+Step2- only columns with the mean and standard deviation measures are extracted from the whole dataset. The corresponding columns are given the correct names, taken from "features.txt".
+
+Step3&4- The activity names and IDs from "activity_labels".txt are substituted in the dataset. On the whole dataset, those column names are corrected.
+
+Step5- A new and independant tidy dataset with the average of each activity and subject (30 subjects * 6 activities = 180 rows). The output file is called "averages_data.txt", and uploaded to this repository.
+
+# Variables
+
+The files contained in the subfolder named "inertial_signals" are not used in this project, because they do not have the same number of columns (variables) as X_train/_test. 
+
+X_train, y_train, x_test, y_test, subject_train and subject_test contain the data from the downloaded files.
+
+X_data, y_data and subject_data merge the previous datasets to further analysis.
+
+features contains the correct names for the X_data dataset, which are applied to the column names stored in mean_and_std_features, a numeric vector used to extract the desired data.
+
+A similar approach is taken with activity names through the activities variable.
+
+"averages_data.txt" contains the relevant averages. ddply() from the plyr package is used to apply colMeans().
+
