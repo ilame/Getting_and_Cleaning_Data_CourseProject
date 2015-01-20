@@ -60,6 +60,7 @@ Notes:
 The script run_analysis.R performs the 5 steps described in the course project's definition.
 
 Step1- all the files having the same number of columns and referring to the same entities are merged using the rbind() function. 
+
 Step2- only columns with the mean and standard deviation measures are extracted from the whole dataset. The corresponding columns are given the correct names, taken from "features.txt".
 
 Step3&4- The activity names and IDs from "activity_labels".txt are substituted in the dataset. On the whole dataset, those column names are corrected.
