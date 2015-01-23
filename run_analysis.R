@@ -1,6 +1,4 @@
 
-##We need the PLYR package for the ddply() function used in the step 5
-library(plyr)
 
 # Step 1
 #In this step, we should merge the training and the test sets to create one data set. Both training 
@@ -74,5 +72,8 @@ all_data <- cbind(X_data, y_data, subject_data)
 # The last two columns (67 and 68)are "activity" and "subject". Columns from 1 to 66 are from X_data.
 
 averages_data <- ddply(all_data, .(subject, activity), function(x) colMeans(x[, 1:66]))
+
+##We need the PLYR package for the ddply() function
+library(plyr)
 
 write.table(averages_data, "averages_data.txt", sep = ",", row.name=FALSE)
