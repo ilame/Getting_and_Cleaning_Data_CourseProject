@@ -17,7 +17,7 @@ Source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+
 
 #Files
 
-The code takes for granted all the data is present in the same folder, un-compressed and without names altered. 
+The code takes for granted all the data is present in the same folder. 
 
 "CodeBook.md" describes the variables and any transformations or work that was performed to clean up the data.
 
